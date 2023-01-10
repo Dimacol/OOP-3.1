@@ -1,7 +1,9 @@
+package entities;
 import java.util.Objects;
 
 public class NewHotDrink extends HotDrink {
     private int temperature;
+    public Object getName;
 
     /**
      * Конструктор с инициализацией
@@ -43,5 +45,25 @@ public class NewHotDrink extends HotDrink {
     public int hashCode() {
         return Objects.hash(super.hashCode(), temperature);
     }
+    // Сравнение напитков по температуре
+    @Override
+    public Double getAttractiveness() {
+        return Double.valueOf(temperature);
+        
+    }
+
+    public static void ComparableHotDrink(NewHotDrink newHotDrink1, NewHotDrink newHotDrink2) {
+        if (newHotDrink1.compareTo(newHotDrink2) == 1) {
+            System.out.println(newHotDrink1.getName() + " горячее чем " + newHotDrink2.getName());}
+        if (newHotDrink1.compareTo(newHotDrink2) == 0) {
+            System.out.println(newHotDrink1.getName() + " температура равна " + newHotDrink2.getName());}
+        if (newHotDrink1.compareTo(newHotDrink2) == -1) {
+            System.out.println(newHotDrink1.getName() + " холоднее чем " + newHotDrink2.getName());}    
+ 
+
+        }
+         
 }
+
+
 

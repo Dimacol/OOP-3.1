@@ -7,6 +7,9 @@
 
 import java.util.logging.Logger;
 
+import entities.HotDrinkVendor;
+import entities.NewHotDrink;
+
 public class main {
     public static void main(String[] args) {
         // напитки
@@ -29,5 +32,15 @@ public class main {
         logger.info(vendor.getProduct("Латте", 50, 55));
         logger.info(vendor.getProduct("Американо", 50, 60));
 
+
+        // Сравнение продуктов по температуре
+        NewHotDrink.ComparableHotDrink(americano,latte);
+        NewHotDrink.ComparableHotDrink(latte,americano);
+        NewHotDrink.ComparableHotDrink(greenTea,americano);
+        /*  Значения сравнения
+        System.out.println(americano.compareTo(latte)); ==1
+        System.out.println(americano.compareTo(greenTea));==0
+        System.out.println(latte.compareTo(greenTea));==-1*/
     }
+
 }

@@ -1,11 +1,12 @@
+package entities;
 import java.util.Objects;
 
 /**
  * Класс горячий напиток
  */
-public class HotDrink {
+public abstract class HotDrink implements ComparableHotDrink {
 
-    private String name;
+    private static String name;
     private int volume;
 
     /**
@@ -15,7 +16,7 @@ public class HotDrink {
      * @param volume - объем напитка
      */
     public HotDrink(String name, int volume) {
-        this.name = name;
+        HotDrink.name = name;
         this.volume = volume;
     }
 
@@ -40,7 +41,7 @@ public class HotDrink {
     }
 
     public void setName(String name) {
-        this.name = name;
+        HotDrink.name = name;
     }
 
     public int getVolume() {
@@ -56,14 +57,20 @@ public class HotDrink {
     public String toString() {
         return "Напиток " + "'" + name + '\'' + ", объем: " + volume;
     }
+    
+    
+    @Override
+    public int compareTo(ComparableHotDrink o) {
+        return this.getAttractiveness().compareTo(o.getAttractiveness());
+    }
 
     /**
      * Сравнение напитков, ключевым для напитка является наименование, если имена совпадают -
      * напитки равны
      *
      * @param o - объект для сравнения
-     * @return - результат сравнения объектов
-     */
+     * @return - результат сравнения объектов*/
+     
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -73,9 +80,9 @@ public class HotDrink {
             return false;
         }
         HotDrink hotDrink = (HotDrink) o;
-        return name.equals(hotDrink.name);
+        return name.equals(HotDrink.name);
     }
-
+  
     /**
      * переопределение расчета hashCode, используем для расчета name, т.к. наименование напитк -
      * используем как ключ
